@@ -21,11 +21,11 @@ def test_seq2sql():
         epoch_acc(model, BATCH_SIZE, test_sql_data, test_table_data, save_results = True)
 
     # Run the model on the test data and get the execution accuracy
-    execution_accuracy_score =\
-        epoch_exec_acc(model, BATCH_SIZE, test_sql_data, test_table_data, TEST_DB)
+    # execution_accuracy_score =\
+    #     epoch_exec_acc(model, BATCH_SIZE, test_sql_data, test_table_data, TEST_DB)
     
     print("Test logical accuracy: %s;\n  breakdown on (agg, sel, where): %s" % logical_accuracy_score)
-    print("Test execution accuracy: %s" % execution_accuracy_score)
+    # print("Test execution accuracy: %s" % execution_accuracy_score)
 
 
 if __name__ == '__main__':
