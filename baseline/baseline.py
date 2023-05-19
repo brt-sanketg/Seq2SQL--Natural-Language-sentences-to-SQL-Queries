@@ -217,18 +217,18 @@ def run_baseline():
     global pairs
     input_lang, output_lang, pairs = prepareData("en", "sql")
     encoder1 = EncoderRNN(input_lang.n_words, hidden_size).to(device)
-    encoder1.embedding = nn.Embedding(ENC_EMBEDDING_SIZE, hidden_size)
+    # encoder1.embedding = nn.Embedding(ENC_EMBEDDING_SIZE, hidden_size)
     decoder1 = DecoderRNN(hidden_size, output_lang.n_words).to(device)
 
     attn_decoder1 = AttnDecoderRNN(hidden_size, output_lang.n_words, dropout_p=0.5).to(device)
-    attn_decoder1.embedding = nn.Embedding(DEC_EMBEDDING_SIZE, hidden_size)
+    # attn_decoder1.embedding = nn.Embedding(DEC_EMBEDDING_SIZE, hidden_size)
 
-    load_models(
-        encoder1, 
-        decoder1, 
-        attn_decoder1, 
-        file_path="saved_model/Seq2SQL_ENCDEC_best_model2.pth"
-    )
+    # load_models(
+    #     encoder1, 
+    #     decoder1, 
+    #     attn_decoder1, 
+    #     file_path="saved_model/Seq2SQL_ENCDEC_best_model2.pth"
+    # )
     trainIters(encoder1, attn_decoder1, 50000, print_every=1000, plot_every=100,learning_rate=lr_best)
 
     acc = evaluateRandomly(encoder1, attn_decoder1, n=1000)
